@@ -6,9 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "wrangler pages deploy ./dist"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
@@ -17,5 +19,8 @@
     "sharp": "^0.34.3",
     "slugify": "^1.6.6",
     "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "wrangler": "^4.51.0"
   }
 }
