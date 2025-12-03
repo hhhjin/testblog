@@ -20,8 +20,8 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 		<main class="w-full max-w-full m-0">
 			<article>
 				<div class="w-full max-w-3xl mx-auto px-4 py-8 text-gray-700">
-					<div class="mb-4 py-4 text-center leading-none">
-						<div class="mb-2 text-gray-500">
+					<div class="mb-4 py-4 leading-none">
+						<div class="text-stone-500">
 							<FormattedDate date={pubDate} />
 							{
 								updatedDate && (
@@ -31,8 +31,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 								)
 							}
 						</div>
-						<h1 class="m-0 mb-2">{title}</h1>
-						<hr />
+						<h1 class="mt-4!">{title}</h1>
 					</div>
 					<slot />
 				</div>

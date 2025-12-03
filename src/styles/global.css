@@ -1,1 +1,148 @@
 @import "tailwindcss";
+
+/* Article Paragraph Styles */
+article p {
+	@apply my-0.5 px-0 py-1;
+}
+
+/* Article Blockquote Styles */
+article blockquote {
+	@apply my-1 border-l-[3px] border-stone-600 pl-6 italic;
+}
+
+/* Article Heading Styles */
+article h1 {
+	@apply relative mb-1 mt-[1.2em] pb-1 text-4xl font-bold;
+}
+
+article h2 {
+	@apply relative mb-1 mt-[1em] pb-px text-2xl font-semibold tracking-tight;
+}
+
+article h3 {
+	@apply relative mb-1 mt-[1em] pb-px text-xl font-semibold tracking-tight;
+}
+
+article h4 {
+	@apply relative mb-1 mt-[0.75em] text-lg font-semibold tracking-tight;
+}
+
+article h5 {
+	@apply relative mb-1 mt-[0.75em] text-lg font-semibold tracking-tight;
+}
+
+article h6 {
+	@apply relative mb-1 mt-[0.75em] text-base font-semibold tracking-tight;
+}
+
+/* Article HR Styles */
+article hr {
+	@apply h-px my-6 border-none bg-stone-400 bg-clip-content;
+}
+
+/* General List Styles */
+article ul:not([data-list-style-type="todo"]),
+article ol:not([data-list-style-type="todo"]) {
+  position: relative;
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+
+article ul:not([data-list-style-type="todo"]) {
+  list-style-type: disc;
+}
+
+article ol:not([data-list-style-type="todo"]) {
+  list-style-type: decimal;
+}
+
+article ul:not(:has(input[type="checkbox"])),
+article ol:not(:has(input[type="checkbox"])) {
+  position: relative;
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+
+article ul:not(:has(input[type="checkbox"])) {
+  list-style-type: disc;
+}
+
+article ol:not(:has(input[type="checkbox"])) {
+  list-style-type: decimal;
+}
+
+/* Todo List Styles */
+ul[data-list-style-type="todo"],
+ol[data-list-style-type="todo"] {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Todo list items */
+ul[data-list-style-type="todo"] > li,
+ol[data-list-style-type="todo"] > li {
+  position: relative;
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+/* Checked todo items */
+ul[data-list-style-type="todo"] > li[data-checked="true"],
+ol[data-list-style-type="todo"] > li[data-checked="true"] {
+  @apply text-stone-500 line-through;
+  text-decoration: line-through;
+}
+
+/* Todo checkbox marker */
+ul[data-list-style-type="todo"] > li > input[type="checkbox"],
+ol[data-list-style-type="todo"] > li > input[type="checkbox"] {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.5rem;
+  cursor: pointer;
+}
+
+/* Markdown rendered todo lists (common markdown parsers) */
+article ul:has(input[type="checkbox"]),
+article ol:has(input[type="checkbox"]) {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+article ul:has(input[type="checkbox"]) > li,
+article ol:has(input[type="checkbox"]) > li {
+  position: relative;
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+article ul:has(input[type="checkbox"]) > li:has(input[type="checkbox"]:checked),
+article ol:has(input[type="checkbox"]) > li:has(input[type="checkbox"]:checked) {
+  @apply text-stone-500 line-through;
+  text-decoration: line-through;
+}
+
+article ul:has(input[type="checkbox"]) > li > input[type="checkbox"],
+article ol:has(input[type="checkbox"]) > li > input[type="checkbox"] {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.5rem;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Read-only mode */
+article ul:has(input[type="checkbox"]) > li > input[type="checkbox"][readonly],
+article ol:has(input[type="checkbox"]) > li > input[type="checkbox"][readonly],
+article ul:has(input[type="checkbox"]) > li > input[type="checkbox"][disabled],
+article ol:has(input[type="checkbox"]) > li > input[type="checkbox"][disabled] {
+  pointer-events: none;
+}
