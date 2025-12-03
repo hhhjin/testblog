@@ -1,0 +1,88 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <BaseHead title={`About - ${SITE_TITLE}`} description="About this site" />
+  </head>
+  <body>
+    <Header />
+    <main class="w-full max-w-3xl mx-auto px-4 py-8">
+      <article class="prose prose-lg max-w-none">
+        <h1 class="text-4xl font-bold mb-6">About</h1>
+
+        <div class="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <p class="text-gray-700 leading-relaxed mb-2">
+            이 사이트 글은 모두 <a
+              href="https://mdit.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:text-blue-800 underline">Mdit</a
+            >으로 작성되었으며, 테스트 용도로 막 올리는 중입니다. 스타일같은 거
+            테스트할거임
+          </p>
+        </div>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">
+            그리고 GitHub 기반 뉴스레터 & 블로그 플랫폼
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            마크다운 파일을 GitHub에 업로드하기만 하면 뉴스레터나 블로그를 만들
+            수 있는 Substack 같은 SaaS 서비스를 구상 중입니다. 현재는 구상만
+            하고 있음.
+          </p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">핵심 아이디어</h2>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>
+              <strong>간단한 워크플로우:</strong>
+              GitHub 계정과 연동한 후 저장소에 마크다운 파일만 업로드하면 자동으로
+              게시됩니다.
+            </li>
+            <li>
+              <strong>버전 관리:</strong>
+              Git의 히스토리를 활용해 콘텐츠 변경 이력을 추적할 수 있습니다.
+            </li>
+            <li>
+              <strong>개발자 친화적:</strong>
+              복잡한 CMS 없이 익숙한 마크다운과 Git 워크플로우로 콘텐츠를 관리합니다.
+            </li>
+            <li>
+              <strong>자동 빌드 및 배포:</strong>
+              GitHub에 푸시하면 서비스가 자동으로 마크다운을 감지하고 빌드하여 사이트를
+              업데이트합니다.
+            </li>
+            <li>
+              <strong>뉴스레터 기능:</strong>
+              구독자 관리, 이메일 발송, 구독료 결제 등 Substack과 유사한 기능을 제공합니다.
+            </li>
+          </ul>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">작동 방식</h2>
+          <ol class="list-decimal pl-6 space-y-3 text-gray-700">
+            <li>
+              GitHub 계정과 연동하면 플랫폼이 저장소에 접근할 수 있습니다.
+            </li>
+            <li>연동된 저장소에서 마크다운 파일을 작성하고 푸시합니다.</li>
+            <li>
+              서비스가 자동으로 변경사항을 감지하고 빌드하여 사이트를 생성하거나
+              업데이트합니다.
+            </li>
+            <li>구독자들은 이메일로 새 글을 받아볼 수 있습니다.</li>
+          </ol>
+        </section>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

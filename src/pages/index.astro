@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { slugifyTitle } from "../utils/slugify";
+
+const posts = (await getCollection("posts")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="w-full max-w-3xl mx-auto px-4 py-8">
+			<section>
+				<ul class="list-none m-0 p-0">
+					{
+						posts.map((post) => (
+							<li class="opacity-60 transition-opacity duration-200 hover:opacity-100">
+								<a
+									href={`/p/${slugifyTitle(post.data.title)}/`}
+									class="block no-underline text-inherit py-4 border-b border-gray-200"
+								>
+									<h3 class="text-xl font-semibold mb-2 m-0 leading-tight">
+										{post.data.title}
+									</h3>
+									<p class="text-[0.9375rem] mb-3 m-0 leading-relaxed text-gray-600">
+										{post.data.description}
+									</p>
+									<p class="text-sm m-0 text-gray-500">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
