@@ -14,8 +14,36 @@ type Props = CollectionEntry<"posts">;
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+// 모든 포스트를 pubDate 기준 내림차순으로 정렬
+const allPosts = (await getCollection("posts")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// 현재 포스트의 인덱스 찾기
+const currentIndex = allPosts.findIndex((p) => p.id === post.id);
+
+// 이전/다음 포스트 찾기
+const prevPost =
+	currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+// 네비게이션용 데이터 준비
+const prevPostData = prevPost
+	? {
+			title: prevPost.data.title,
+			slug: slugifyTitle(prevPost.data.title),
+		}
+	: null;
+
+const nextPostData = nextPost
+	? {
+			title: nextPost.data.title,
+			slug: slugifyTitle(nextPost.data.title),
+		}
+	: null;
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} prevPost={prevPostData} nextPost={nextPostData}>
 	<Content />
 </BlogPost>
